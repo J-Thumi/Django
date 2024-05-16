@@ -1,0 +1,22 @@
+Always atart by setting the virtual environment eg test 
+when ever you are making changes always remember to set it
+
+SETTING VIRTUAL ENVIRONMENT
+Run mkvirtualenv EnvName in the directory you want to create the django project
+mkvirtualenv test
+If alraedy made to use the already made virtual environment run workon EnvName
+workon test
+
+
+To create a new django project run this in the terminal in the folder you want it to be in django-admin startproject ProjectName
+django-admin startproject First
+To start the server run the following while in the folder created after above commandpython manage.py runserver
+
+A project may have several apps i.e jumia may have product,basket,details apps
+to creat an app make sure you are in an environment you created the project with
+run python manage.py startapp AppName
+python manage.py startapp calc
+calc app is created as a folder with several files
+
+
+Navigate to the 
