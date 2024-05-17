@@ -19,4 +19,47 @@ python manage.py startapp calc
 calc app is created as a folder with several files
 
 
-Navigate to the 
+Navigate to the  app folder and create a file named urls.py
+and type from django.urls import path 
+from . import views also is to be included
+in the urls.py of app create a list named urlpatterns and assign paths to it using path() function
+the path() function is used within URL patterns to define how URLs map to specific views in your web application. 
+It's a core concept for routing user requests to the appropriate parts of your Django project.
+Here's a breakdown of the key aspects of path():
+Purpose:
+Creates a URL pattern that associates a specific URL path with a view function.
+Provides flexibility in defining different routes within your application
+
+path(route, view, kwargs=None, name=None)
+route: A string that defines the URL path. You can use placeholders like <int:pk> to capture dynamic parts of the URL.
+view: A callable object (usually a function) that handles the request for that specific URL path. 
+This function is responsible for processing the request data and returning a response. 
+It is def in the views.py of the app
+kwargs (optional): A dictionary containing keyword arguments to be passed to the view function.
+name (optional): A string to give a unique name to the URL pattern. 
+This name can be used later for functionalities like reverse URL resolution.
+
+from django.urls import path
+from . import views  # Assuming your views are in the same directory
+
+urlpatterns = [
+    path('', views.home, name='home'),  # Maps the root URL (`/`) to the 'home' view
+    path('articles/<int:article_id>/', views.article_detail, name='article_detail'), 
+     # Captures an integer 'article_id' and passes it to the 'article_detail' view
+]
+
+The function in the views.py of the apps accept request from the user
+so they have a request parameter passed to them
+we return a HttpResponse function that has a string we are to output
+we should also import the Httpresponse from django.http
+
+from django.http import HttpResponse
+def home(request):
+    return HttpResponse("Hello world")
+
+we should notify the project about the app 
+do this by adding a path in the urls.py of the project
+add path('',include('appName.urls'))
+remember you are writing it in a list dont forget the ,
+remember also to import this include function from django.urls
+from django.urls import path,include
